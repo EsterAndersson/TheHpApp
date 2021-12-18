@@ -52,80 +52,78 @@ export default {
  Label {
    text-align: center;
    font-size: 20;
+   padding: 10 10 10 10;
  }
  .bookTitle{
    font-size: 20;
  }
- .textviewBook{
-   font-size:18;
-   text-align: center;
- }
- .textviewInfo{
-   font-size:18;
-   text-align: center;
- }
+ListView { 
+    separator-color: transparent;
+    padding-top: 10;
+  }
+ Stacklayout {
+  border-color: white;
+  border-width: 4;
+  border-radius: 20;
+}
 
 </style>
 
 <template>
- <Page>
+  <Page>
     <ActionBar title="Characters" />
     <TabView android:tabBackgroundColor="#53ba82"
              android:tabTextColor="#c4ffdf"
              android:selectedTabTextColor="#ffffff"
              androidSelectedTabHighlightColor="#ffffff">
-            <TabViewItem title="Characters">
-                <GridLayout columns="*" rows="*">
-                  <ListView for="item in allCharacters" @itemTap="onItemTap"  separatorColor="transparent">
-                    <v-template>
-                      <StackLayout backgroundColor="#e5e5e5">
-                        <Label :text="item.character" padding="10, 10, 10, 10" width="100%" />
-                        <Label :text="item.hogwartsHouse"  width="100%" />
-                    </StackLayout>
-                    </v-template>
-                  </ListView>
-                </GridLayout>
-            </TabViewItem>
-            <TabViewItem title="Spells">
-                <GridLayout columns="*" rows="*">
-                    <ListView for="spell in spells" rowHeight="100" >
-                      <v-template>
-                        <StackLayout>
-                          <Label :text="spell.spell" />
-                          <Label :text="spell.use" width="100%"/>
-                        </StackLayout>
-                      </v-template>
-                    </ListView>
-                </GridLayout>
-            </TabViewItem>
-            <TabViewItem title="Books">
-                <GridLayout columns="*" rows="*">
-                    <ListView for="book in books">
-                      <v-template>
-                        <StackLayout backgroundColor="#e5e5e5" borderRadius="20" padding-top="40">
-                          <Label :text="book.title" class="bookTitle"/>
-                          <TextView editable="False" class="textviewBook"> 
-                           <span :text="book.description"/>
-                          </TextView>/>
-                        </StackLayout>
-                        </v-template>
-                    </ListView>
-                </GridLayout>
-            </TabViewItem>
-            <TabViewItem title="Info">
-                <GridLayout columns="*" rows="*">
-                    <ListView for="info in allInfo">
-                      <v-template>
-                        <StackLayout backgroundColor="#e5e5e5" borderRadius="20" padding-top="40">
-                            <Label :text="info.type" class="infoType"/>
-                            <TextView editable="False" class="textviewInfo"> 
-                             <span :text="info.content"/>
-                            </TextView>/>
-                        </StackLayout>
-                        </v-template>
-                    </ListView>
-                </GridLayout>
-            </TabViewItem>
-        </TabView>
+      <TabViewItem title="Characters">
+        <GridLayout columns="*" rows="*">
+          <ListView for="item in allCharacters" @itemTap="onItemTap">
+            <v-template>
+              <StackLayout backgroundColor="#e5e5e5">
+                <Label :text="item.character"/>
+                <Label :text="item.hogwartsHouse"/>
+              </StackLayout>
+            </v-template>
+          </ListView>
+        </GridLayout>
+      </TabViewItem>
+      <TabViewItem title="Spells">
+        <GridLayout columns="*" rows="*">
+            <ListView for="spell in spells" >
+              <v-template>
+                <StackLayout backgroundColor="#e5e5e5">
+                  <Label :text="spell.spell"/>
+                  <Label :text="spell.use" textWrap="true"/>
+                </StackLayout>
+              </v-template>
+            </ListView>
+        </GridLayout>
+      </TabViewItem>
+      <TabViewItem title="Books">
+        <GridLayout columns="*" rows="*">
+            <ListView for="book in books">
+              <v-template>
+                <StackLayout backgroundColor="#e5e5e5">
+                  <Label :text="book.title" class="bookTitle"/>
+                  <Label :text="book.description" textWrap="true"/>
+                </StackLayout>
+              </v-template>
+            </ListView>
+        </GridLayout>
+      </TabViewItem>
+      <TabViewItem title="Info">
+        <GridLayout columns="*" rows="*">
+            <ListView for="info in allInfo">
+              <v-template>
+                <StackLayout backgroundColor="#e5e5e5">
+                    <Label :text="info.type" class="infoType"/>
+                    <Label :text="info.content" textWrap="true"/>
+                </StackLayout>
+              </v-template>
+            </ListView>
+        </GridLayout>
+      </TabViewItem>
+    </TabView>
   </Page>
 </template>
