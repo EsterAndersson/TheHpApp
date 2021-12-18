@@ -6,7 +6,8 @@ Vue.use(Vuex);
 const state = {
     allCharacters: [],
     books:[],
-    spells:[]
+    spells:[],
+    allInfo:[]
 }
 const mutations = {
   setCharacters(state, allCharacters) {
@@ -17,6 +18,9 @@ const mutations = {
   },
   setSpells(state, spells) {
     state.spells = spells
+  },
+  setInfo(state, allInfo) {
+    state.allInfo = allInfo
   },
 }
 
@@ -41,8 +45,14 @@ const actions = {
       .then(result => { 
         store.commit('setSpells', result )
     })
+  },
+  fetchInfo(store) {
+    fetch('https://fedeperin-harry-potter-api-en.herokuapp.com/info')
+      .then(response => response.json())
+      .then(result => { 
+        store.commit('setInfo', result )
+    })
   }
-  
 }
 
 export default new Vuex.Store({
