@@ -1,13 +1,11 @@
 <script>
 import App from './App'
 export default {
-
   props: ['id', 'character', 'image','interpretedBy', 'hogwartsHouse', 'child'],
 
   data() {
     return {
       App : App,
-
     }
   },
 
@@ -21,23 +19,22 @@ export default {
 
 <style scoped>
 ActionBar {
-  background-color: #3e81b8;
+  background-color: #D3A625;
   color: #ffffff;
 }
 .CharacterContainer {
   align-items: center;
-  background-color: #cacaca;
+  background-color: #E6E2B5;
   padding: 20, 20, 20, 20;
   margin: 3%;
   border-radius: 0, 20, 0, 20;
-  text-shadow: 10, 10, 10, 10 rgb(124, 38, 38);
 }
 .button {
   background-color: #000000;
   border: none;
   color: white;
   padding: 15px 32px;
-  margin:1%;
+  margin:3%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -48,18 +45,18 @@ ActionBar {
 Image {
   width: 270;
   margin-top: 20;
+  height: 300;
 }
 .CharacterName {
-  font-size: 35;
+  font-size: 30;
   color: #333;
 }
-.HogwartsHouse {
-  padding: 10;
-  font-size: 16;
-}
-Label{
-  overflow-wrap: break-word;
-  word-wrap: true;
+Label {
+  font-size: 16px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  text-align: center;
+  margin-top:10px;
+  text-align: center;
 }
 </style>
 
@@ -68,10 +65,10 @@ Label{
     <ActionBar :title="this.character"/>
       <FlexboxLayout flexDirection="column" class="CharacterContainer" >
         <Image :src="this.image" />
-        <Label :text="this.character" class="CharacterName" />
+        <Label :text="this.character" class="CharacterName" textWrap="true"/>
         <Label :text="this.interpretedBy" class="InterpretedBy" />
         <Label :text="this.hogwartsHouse" class="HogwartsHouse" />
-        <Label :text="this.child" class="Child" />
+        <Label :text="this.child" class="Child" textWrap="true"/>
 
         <Button text="Back" @tap="goBack" class="button"/>
 
